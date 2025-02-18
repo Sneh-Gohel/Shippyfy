@@ -129,3 +129,98 @@ body {
     padding: 10px 20px;
     border-radius: 5px;
 }
+/* Add these animation keyframes */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Animation delays */
+.nav .rightSide div {
+    animation: fadeIn 0.8s ease-out forwards;
+    opacity: 0;
+}
+
+.nav .rightSide div:nth-child(1) { animation-delay: 0.2s; }
+.nav .rightSide div:nth-child(2) { animation-delay: 0.3s; }
+.nav .rightSide div:nth-child(3) { animation-delay: 0.4s; }
+.nav .rightSide div:nth-child(4) { animation-delay: 0.5s; }
+.nav .rightSide div:nth-child(5) { animation-delay: 0.6s; }
+.nav .rightSide div:nth-child(6) { animation-delay: 0.7s; }
+
+.mainText {
+    animation: slideUp 0.8s ease-out 0.3s forwards;
+    opacity: 0;
+    will-change: transform, opacity;
+}
+
+.subText {
+    animation: slideUp 0.8s ease-out 0.5s forwards;
+    opacity: 0;
+    will-change: transform, opacity;
+}
+
+.buttonList {
+    animation: fadeIn 0.8s ease-out 0.7s forwards;
+    opacity: 0;
+    will-change: transform, opacity;
+}
+
+/* Model viewer animation */
+.mainSection .rightSide {
+    animation: fadeIn 1s ease-out 0.4s forwards;
+    opacity: 0;
+    transform: translateY(30px);
+    will-change: transform, opacity;
+}
+
+/* Logo animation */
+.nav .logo {
+    animation: fadeIn 0.8s ease-out 0.1s forwards;
+    opacity: 0;
+    transform: translateX(-20px);
+}
+
+/* Add smooth transitions for hover effects */
+.mainButton, .subButton {
+    transition: all 0.3s ease-out;
+    transform: translateY(0);
+}
+
+.mainButton:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(36, 99, 235, 0.3);
+}
+
+.subButton:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(245, 219, 219, 0.3);
+}
+
+/* Smooth background transition */
+.hero {
+    animation: gradientTransition 1.5s ease-out;
+}
+
+@keyframes gradientTransition {
+    from { background-position: 0% 50%; }
+    to { background-position: 100% 50%; }
+}
+
