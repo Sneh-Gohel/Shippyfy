@@ -1,0 +1,131 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', serif;
+}
+
+.hero {
+    width: 100%;
+    height: 100vh;
+    background-color: white;
+    background-image: linear-gradient(185deg, #EAEEFE 45%, #5743CD);
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Vertically center items */
+    padding: 20px;
+    height: 80px; /* Adjust height as needed */
+}
+
+.nav .a-links {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav .leftSide {
+    width: auto; /* Adjust as needed */
+}
+
+.nav .logo {
+    padding-left: 20px;
+    height: 100%; /* Adjust this percentage to control the logo's height relative to the nav */
+    display: flex; /* Use flexbox to center the image */
+    align-items: center; /* Vertically center */
+}
+
+.nav .logo img {
+    max-height: 80%; /* Adjust this percentage to control the logo's height within the container */
+    width: auto; /* Maintain aspect ratio */
+    /* Add these lines to limit maximum size */
+    max-width: 150px; /* Adjust this value as needed */
+    scale: 1.5;
+}
+
+
+.nav .rightSide {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav .rightSide div p {
+    margin: 0; 
+}
+
+/* Main Section Styles */
+.mainSection {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Vertically align */
+    padding-left: 40px; 
+    padding-right : 40px; 
+    height: calc(100vh - 120px); /* Adjust height as needed */
+}
+
+.mainSection .leftSide {
+    width: 65%; 
+}
+
+.mainSection .leftSide h1 {
+    font-size: 4.5em; /* Adjust the font size as needed */
+    margin-bottom: 20px;
+}
+
+.mainSection .leftSide .mainText {
+    width: 80%;
+}
+
+.mainSection .leftSide .subText {
+    width: 77%;
+}
+
+.mainSection .leftSide p {
+    font-size: 1.1em; /* Adjust the font size as needed */
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+.mainSection .leftSide .buttonList {
+    display: flex;
+    gap: 20px;
+}
+
+.mainSection .rightSide {
+    width: 50%; 
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+}
+
+.mainSection .rightSide img {
+    max-width: 80%; /* Control the image size */
+    height: auto; /* Maintain aspect ratio */
+    display: block; /* Remove extra space below the image */
+}
+
+.mainButton {
+    font-size: 1em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #2463EB;
+    color: white;
+    padding: 10px 20px;
+}
+
+.subButton {
+    font-size: 1em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #F5DBDB;
+    color: black;
+    padding: 10px 20px;
+    border-radius: 5px;
+}

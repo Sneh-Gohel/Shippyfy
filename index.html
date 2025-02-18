@@ -1,11 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Shippyfy - A Reliable Shipping Continers Provider.</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128/examples/js/loaders/GLTFLoader.js"></script>
+
+
 </head>
+
 <body>
-    
+    <div class="hero">
+        <div class="nav">
+            <div class="a-links">
+                <div class="leftSide">
+                    <div class="logo">
+                        <img src="images/logo.png" alt="Shippyfy Logo">
+                    </div>
+                </div>
+                <div class="rightSide">
+                    <div>
+                        <p>Home</p>
+                    </div>
+                    <div>
+                        <p>Buy Continers</p>
+                    </div>
+                    <div>
+                        <p>Rent Continers</p>
+                    </div>
+                    <div>
+                        <p>About Us</p>
+                    </div>
+                    <div>
+                        <p>Contact</p>
+                    </div>
+                    <div class="mainButton">
+                        <p>Get a Quote</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mainSection">
+            <div class="leftSide">
+                <div class="mainText">
+                    <h1>
+                        Reliable Shipping Containers For Your Business Needs.
+                    </h1>
+                </div>
+                <div class="subText">
+                    <p>
+                        Explore our extensive selection of durable and versatile shipping containers tailored to meet your business demands.
+                    </p>
+                </div>
+                <div class="buttonList">
+                    <button class="mainButton">Get a Quote</button>
+                    <button class="subButton">Discover Options</button>
+                </div>
+            </div>
+            <div class="rightSide">
+                <model-viewer 
+                    src="scene.gltf" 
+                    alt="3D Shipping Container"
+                    auto-rotate 
+                    camera-controls 
+                    ar
+                    exposure="1"
+                    style="width: 100%; height: 500px; max-width: 600px;">
+                </model-viewer>
+            </div>
+        </div>
+    </div>
 </body>
+
 </html>
