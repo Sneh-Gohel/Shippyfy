@@ -3,13 +3,17 @@ body {
     padding: 0;
     box-sizing: border-box;
     font-family: 'Inter', serif;
+    background-color: #EAEEFE;
+    scroll-behavior: smooth;
 }
 
 .hero {
     width: 100%;
-    height: 100vh;
-    background-color: white;
-    background-image: linear-gradient(185deg, #EAEEFE 45%, #5743CD);
+    min-height: 100vh;
+    background-image: linear-gradient(185deg, #EAEEFE 45%, #5743CD );
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .nav {
@@ -63,18 +67,19 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center; /* Vertically align */
-    padding-left: 40px; 
-    padding-right : 40px; 
-    height: calc(100vh - 120px); /* Adjust height as needed */
+    padding: 40px;
 }
 
 .mainSection .leftSide {
     width: 65%; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
 }
 
 .mainSection .leftSide h1 {
     font-size: 4.5em; /* Adjust the font size as needed */
-    margin-bottom: 20px;
 }
 
 .mainSection .leftSide .mainText {
@@ -224,3 +229,98 @@ body {
     to { background-position: 100% 50%; }
 }
 
+/* Add these to your existing CSS */
+
+/* Base Responsive Rules */
+* {
+    box-sizing: border-box;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Updated Customer Section Styles */
+.customer {
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.customer .mainText h1 {
+    font-size: 2.5rem;
+    color: black;
+    margin-bottom: 60px;
+    position: relative;
+    display: inline-block;
+    opacity: 0;
+}
+
+.customer .mainText h1::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -15px;
+    width: 200px;
+    height: 3px;
+    background-color: #5743CD;
+    transform: translateX(-50%);
+}
+
+.customer .mainContent {
+    display: grid;
+    grid-template-columns: repeat(4, 2fr);
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    align-items: center; /* Vertically center logos */
+}
+
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.customer .mainContent img {
+    max-height: 80px;
+    width: auto;
+    object-fit: contain;
+    margin: 0 auto;
+    opacity: 0; /* Hidden initially */
+    transform: translateY(30px);
+}
+
+
+
+/* Apply animation delay for a staggered effect */
+.customer .mainContent img.visible {
+    opacity: 1;
+    transform: translateY(0);
+    animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.section3{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 50px;
+    margin-top: 30px;
+    background-image: linear-gradient(0deg, #EAEEFE 45%, #b2abdb );
+}
+
+.section3 .leftSide {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding-right: 10%;
+}
