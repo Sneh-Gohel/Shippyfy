@@ -10,7 +10,7 @@ body {
 .hero {
     width: 100%;
     min-height: 100vh;
-    background-image: linear-gradient(185deg, #EAEEFE 45%, #5743CD );
+    background-image: linear-gradient(185deg, #EAEEFE 45%, #5743CD);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -19,9 +19,11 @@ body {
 .nav {
     display: flex;
     justify-content: space-between;
-    align-items: center; /* Vertically center items */
+    align-items: center;
+    /* Vertically center items */
     padding: 20px;
-    height: 80px; /* Adjust height as needed */
+    height: 80px;
+    /* Adjust height as needed */
 }
 
 .nav .a-links {
@@ -32,21 +34,28 @@ body {
 }
 
 .nav .leftSide {
-    width: auto; /* Adjust as needed */
+    width: auto;
+    /* Adjust as needed */
 }
 
 .nav .logo {
     padding-left: 20px;
-    height: 100%; /* Adjust this percentage to control the logo's height relative to the nav */
-    display: flex; /* Use flexbox to center the image */
-    align-items: center; /* Vertically center */
+    height: 100%;
+    /* Adjust this percentage to control the logo's height relative to the nav */
+    display: flex;
+    /* Use flexbox to center the image */
+    align-items: center;
+    /* Vertically center */
 }
 
 .nav .logo img {
-    max-height: 80%; /* Adjust this percentage to control the logo's height within the container */
-    width: auto; /* Maintain aspect ratio */
+    max-height: 80%;
+    /* Adjust this percentage to control the logo's height within the container */
+    width: auto;
+    /* Maintain aspect ratio */
     /* Add these lines to limit maximum size */
-    max-width: 150px; /* Adjust this value as needed */
+    max-width: 150px;
+    /* Adjust this value as needed */
     scale: 1.5;
 }
 
@@ -59,19 +68,20 @@ body {
 }
 
 .nav .rightSide div p {
-    margin: 0; 
+    margin: 0;
 }
 
 /* Main Section Styles */
 .mainSection {
     display: flex;
     justify-content: space-between;
-    align-items: center; /* Vertically align */
+    align-items: center;
+    /* Vertically align */
     padding: 40px;
 }
 
 .mainSection .leftSide {
-    width: 65%; 
+    width: 65%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -79,7 +89,8 @@ body {
 }
 
 .mainSection .leftSide h1 {
-    font-size: 4.5em; /* Adjust the font size as needed */
+    font-size: 4.5em;
+    /* Adjust the font size as needed */
 }
 
 .mainSection .leftSide .mainText {
@@ -91,7 +102,8 @@ body {
 }
 
 .mainSection .leftSide p {
-    font-size: 1.1em; /* Adjust the font size as needed */
+    font-size: 1.1em;
+    /* Adjust the font size as needed */
     line-height: 1.6;
     margin-bottom: 30px;
 }
@@ -102,16 +114,19 @@ body {
 }
 
 .mainSection .rightSide {
-    width: 50%; 
+    width: 50%;
     display: flex;
     justify-content: center;
-    align-items: center; 
+    align-items: center;
 }
 
 .mainSection .rightSide img {
-    max-width: 80%; /* Control the image size */
-    height: auto; /* Maintain aspect ratio */
-    display: block; /* Remove extra space below the image */
+    max-width: 80%;
+    /* Control the image size */
+    height: auto;
+    /* Maintain aspect ratio */
+    display: block;
+    /* Remove extra space below the image */
 }
 
 .mainButton {
@@ -134,12 +149,14 @@ body {
     padding: 10px 20px;
     border-radius: 5px;
 }
+
 /* Add these animation keyframes */
 @keyframes fadeIn {
     from {
         opacity: 0;
         transform: translateY(20px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -151,6 +168,7 @@ body {
         transform: translateY(50px);
         opacity: 0;
     }
+
     to {
         transform: translateY(0);
         opacity: 1;
@@ -163,12 +181,29 @@ body {
     opacity: 0;
 }
 
-.nav .rightSide div:nth-child(1) { animation-delay: 0.2s; }
-.nav .rightSide div:nth-child(2) { animation-delay: 0.3s; }
-.nav .rightSide div:nth-child(3) { animation-delay: 0.4s; }
-.nav .rightSide div:nth-child(4) { animation-delay: 0.5s; }
-.nav .rightSide div:nth-child(5) { animation-delay: 0.6s; }
-.nav .rightSide div:nth-child(6) { animation-delay: 0.7s; }
+.nav .rightSide div:nth-child(1) {
+    animation-delay: 0.2s;
+}
+
+.nav .rightSide div:nth-child(2) {
+    animation-delay: 0.3s;
+}
+
+.nav .rightSide div:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+.nav .rightSide div:nth-child(4) {
+    animation-delay: 0.5s;
+}
+
+.nav .rightSide div:nth-child(5) {
+    animation-delay: 0.6s;
+}
+
+.nav .rightSide div:nth-child(6) {
+    animation-delay: 0.7s;
+}
 
 .mainText {
     animation: slideUp 0.8s ease-out 0.3s forwards;
@@ -204,7 +239,8 @@ body {
 }
 
 /* Add smooth transitions for hover effects */
-.mainButton, .subButton {
+.mainButton,
+.subButton {
     transition: all 0.3s ease-out;
     transform: translateY(0);
 }
@@ -225,8 +261,13 @@ body {
 }
 
 @keyframes gradientTransition {
-    from { background-position: 0% 50%; }
-    to { background-position: 100% 50%; }
+    from {
+        background-position: 0% 50%;
+    }
+
+    to {
+        background-position: 100% 50%;
+    }
 }
 
 /* Add these to your existing CSS */
@@ -274,7 +315,8 @@ img {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
-    align-items: center; /* Vertically center logos */
+    align-items: center;
+    /* Vertically center logos */
 }
 
 
@@ -283,6 +325,7 @@ img {
         opacity: 0;
         transform: translateY(30px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -294,7 +337,8 @@ img {
     width: auto;
     object-fit: contain;
     margin: 0 auto;
-    opacity: 0; /* Hidden initially */
+    opacity: 0;
+    /* Hidden initially */
     transform: translateY(30px);
 }
 
@@ -307,13 +351,13 @@ img {
     animation: fadeInUp 0.6s ease-out forwards;
 }
 
-.section3{
+.section3 {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    /* align-items: center; */
     padding: 50px;
     margin-top: 30px;
-    background-image: linear-gradient(0deg, #EAEEFE 45%, #b2abdb );
+    background-image: linear-gradient(0deg, #EAEEFE 45%, #b2abdb);
 }
 
 .section3 .leftSide {
@@ -323,4 +367,115 @@ img {
     justify-content: center;
     align-items: flex-start;
     padding-right: 10%;
+}
+
+.section3 .leftSide .tagLine {
+    border: solid 1px black;
+    border-radius: 10px;
+    padding: 10px;
+    margin-left: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.5s ease;
+}
+
+.section3 .leftSide .tagLine h4 {
+    margin: 0px;
+    font-weight: 500;
+    position: relative;
+    z-index: 2;
+}
+
+.section3 .leftSide .mainButton {
+    margin-top: 20px;
+    display: flex;
+}
+
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Initially hide all left-side text */
+.section3 .leftSide>* {
+    opacity: 0;
+}
+
+/* Initially hide the right-side image */
+.section3 .rightSide img {
+    opacity: 0;
+}
+
+/* Button spacing */
+.section3 .mainButton i {
+    margin-right: 8px;
+}
+
+.section3 .leftSide .tagLine::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -95%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(0deg,
+            transparent,
+            transparent 30%,
+            #5743CD);
+    transform: rotate(-45deg);
+    transition: all 0.5s ease;
+    opacity: 0;
+}
+
+.section3 .leftSide .tagLine:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px #5743CD;
+}
+
+.section3 .leftSide .tagLine:hover::before {
+    opacity: 1;
+    transform: rotate(-45deg) translateY(400%);
+}
+
+.section3 .rightSide img {
+    border-radius: 15px;
+    border: 0 solid;
+    box-shadow: inset 0 0 20px rgba(255, 255, 255, 0);
+    outline: 5px solid;
+    outline-color: rgba(178, 171, 219, 0.5); /* Soft purple-blue outline */
+    outline-offset: 0px;
+    text-shadow: none;
+    transition: all 1250ms cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+/* Hover effect */
+.section3 .rightSide img:hover {
+    border: 1px solid #5743CD; /* Lighter blue border */
+    box-shadow: 
+        inset 0 0 20px rgba(234, 238, 254, 0.6), /* Inner glow */
+        0 0 20px #5743CD; /* Outer glow */
+    outline-color: rgba(234, 238, 254, 0); /* Fades the outline */
+    outline-offset: 15px;
 }
