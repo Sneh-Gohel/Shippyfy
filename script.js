@@ -3,8 +3,10 @@ document.addEventListener("DOMContentLoaded", function () {
     const images = document.querySelectorAll(".customer .mainContent img");
     const leftSide = document.querySelector(".section3 .leftSide");
     const rightSide = document.querySelector(".section3 .rightSide img");
+    const textElements = document.querySelectorAll(".section3 .leftSide > *");
 
-    const textElements = document.querySelectorAll(".section3 .leftSide > *"); // Select all child elements in leftSide
+    // Select all cards for animation
+    const cards = document.querySelectorAll(".section4 .card");
 
     const observer = new IntersectionObserver(
         (entries) => {
@@ -16,6 +18,9 @@ document.addEventListener("DOMContentLoaded", function () {
                         });
                     } else if (entry.target.classList.contains("rightSide")) {
                         entry.target.style.animation = `fadeInRight 0.8s ease-out forwards`;
+                    } else if (entry.target.classList.contains("card")) {
+                        // Apply staggered left-side animation for each card
+                        entry.target.style.animation = `slideInFromLeft 0.6s ease-out ${index * 0.2}s forwards`;
                     } else {
                         entry.target.style.animation = `fadeInUp 0.6s ease-out ${index * 0.2}s forwards`;
                     }
@@ -30,4 +35,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (h1) observer.observe(h1);
     if (leftSide) observer.observe(leftSide);
     if (rightSide) observer.observe(rightSide);
+
+    // Observe cards for animation
+    cards.forEach((card) => observer.observe(card));
 });
