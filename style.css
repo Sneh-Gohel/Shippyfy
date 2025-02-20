@@ -640,3 +640,338 @@ img {
     opacity: 0;
     transform: translateX(-100%);
 }
+
+.testimonials {
+    padding: 80px 20px;
+    background-color: #EAEEFE;
+    overflow: hidden;
+}
+
+.testimonials h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    color: #1a1a1a;
+    margin-bottom: 50px;
+}
+
+.testimonial-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.testimonial-card {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    overflow: hidden;
+}
+
+.testimonial-card:hover {
+    transform: translateY(-5px);
+}
+
+.testimonial-text {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #4a5568;
+    margin-bottom: 20px;
+}
+
+.client-info {
+    border-top: 1px solid #e2e8f0;
+    padding-top: 20px;
+}
+
+.client-name {
+    font-size: 1.2rem;
+    color: #2d3748;
+    margin-bottom: 4px;
+}
+
+.client-role {
+    font-size: 0.9rem;
+    color: #718096;
+    font-weight: 500;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .testimonials {
+        padding: 60px 15px;
+    }
+    
+    .testimonials h2 {
+        font-size: 2rem;
+    }
+    
+    .testimonial-container {
+        grid-template-columns: 1fr;
+        max-width: 600px;
+    }
+}
+@keyframes slideInFromRight {
+    0% {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Ensure testimonials are initially hidden for animation */
+.testimonial-card {
+    opacity: 0;
+    transform: translateX(100%);
+}
+.faq-section {
+    padding: 80px 20px;
+    background: #f8f9fa;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.faq-section h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    color: #2d3748;
+    margin-bottom: 1rem;
+}
+
+.subheading {
+    text-align: center;
+    color: #718096;
+    margin-bottom: 3rem;
+    font-size: 1.2rem;
+}
+
+.faq-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.faq-item {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.faq-question {
+    padding: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.faq-question h3 {
+    margin: 0;
+    font-size: 1.1rem;
+    color: #2d3748;
+    font-weight: 600;
+}
+
+.toggle-icon {
+    font-size: 1.5rem;
+    color: #5743CD;
+    transition: transform 0.3s ease;
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    padding: 0 1.5rem;
+    color: #4a5568;
+    line-height: 1.6;
+}
+
+.faq-answer p {
+    padding: 0 0 1.5rem 0;
+    margin: 0;
+}
+
+/* Active State */
+.faq-item.active {
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.faq-item.active .toggle-icon {
+    transform: rotate(45deg);
+}
+
+.faq-item.active .faq-answer {
+    max-height: 500px; /* Adjust based on content */
+}
+
+/* Hover Effects */
+.faq-item:hover {
+    transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+    .faq-section {
+        padding: 60px 15px;
+    }
+    
+    .faq-section h2 {
+        font-size: 2rem;
+    }
+    
+    .faq-question {
+        padding: 1rem;
+    }
+}
+.faq-item {
+    opacity: 0;
+    transform: translateY(30px);
+}
+/* Contact Section */
+.contact-footer {
+    background: #EAEEFE;
+    padding: 60px 20px 30px;
+}
+
+.contact-section h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    color: #2d3748;
+    margin-bottom: 40px;
+}
+
+.contact-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto 50px;
+}
+
+.contact-method {
+    text-align: center;
+    padding: 30px;
+    background: white;
+    border-radius: 12px;
+    transition: transform 0.3s ease;
+}
+
+.contact-method:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(87, 67, 205, 0.1);
+}
+
+.contact-method i {
+    font-size: 2rem;
+    color: #5743CD;
+    margin-bottom: 15px;
+}
+
+.contact-method h3 {
+    color: #2d3748;
+    margin-bottom: 10px;
+}
+
+.contact-method p {
+    color: #4a5568;
+    line-height: 1.6;
+}
+
+.contact-method a {
+    color: #5743CD;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.contact-method a:hover {
+    color: #3a2b8a;
+}
+
+/* Website Credits */
+.website-credits {
+    border-top: 1px solid #d1d5db;
+    padding-top: 30px;
+}
+
+.credits-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.developer-credits {
+    text-align: right;
+    color: #4a5568;
+}
+
+.social-links {
+    margin-top: 10px;
+}
+
+.social-links a {
+    color: #5743CD;
+    margin-left: 15px;
+    font-size: 1.2rem;
+    transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+    color: #3a2b8a;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .contact-section h2 {
+        font-size: 2rem;
+    }
+    
+    .credits-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .developer-credits {
+        text-align: center;
+        margin-top: 20px;
+    }
+    
+    .social-links a {
+        margin: 0 10px;
+    }
+}
+
+@keyframes bounceIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.8) translateY(50px);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.05) translateY(-10px);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+/* Apply animation only once */
+.contact-method, .website-credits, .contact-section h2 {
+    opacity: 0;
+    transform: translateY(30px);
+    animation-fill-mode: forwards; /* Keeps the final state after animation */
+}
+
+
+/* Font Awesome */
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css');
