@@ -7,6 +7,30 @@ body {
     scroll-behavior: smooth;
 }
 
+.section {
+    display: none; /* Hidden by default */
+  }
+  
+  .section.active {
+    display: block; /* Show active section */
+  }
+  
+  .section {
+    animation: fadeInOut ease-in-out .5s forwards;
+  }
+  
+  @keyframes fadeInOut {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
 .hero {
     width: 100%;
     min-height: 100vh;
@@ -67,7 +91,6 @@ body {
 
 .nav .rightSide {
     display: flex;
-    gap: 20px;
     align-items: center;
     justify-content: center;
 }
@@ -75,6 +98,69 @@ body {
 .nav .rightSide div p {
     margin: 0;
 }
+
+.menu-item {
+    list-style: none;
+  }
+
+  .menu-item a {
+    position: relative;
+    display: block;
+    text-transform: uppercase;
+    /* margin: 2px 0; */
+    padding: 10px 20px;
+    text-decoration: none;
+    color: #262626;
+    font-family: sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: .5s;
+    z-index: 1;
+    cursor: pointer;
+  }
+
+  .menu-item a:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-top: 2px solid #5743CD;
+    border-bottom: 2px solid #5743CD;
+    transform: scaleY(2);
+    opacity: 0;
+    transition: .3s;
+  }
+
+  .menu-item a:after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #5743CD;
+    border-radius: 5px;
+    transform: scale(0);
+    opacity: 0;
+    transition: .3s;
+    z-index: -1;
+  }
+
+  .menu-item a:hover {
+    color: #fff;
+  }
+
+  .menu-item a:hover:before {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+
+  .menu-item a:hover:after {
+    transform: scaleY(1);
+    opacity: 1;
+  }
 
 /* Main Section Styles */
 .mainSection {

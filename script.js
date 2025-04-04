@@ -56,9 +56,43 @@ document.addEventListener("DOMContentLoaded", function () {
 document.querySelectorAll('.faq-item').forEach(item => {
     item.addEventListener('click', () => {
         const currentlyActive = document.querySelector('.faq-item.active');
-        if(currentlyActive && currentlyActive !== item) {
+        if (currentlyActive && currentlyActive !== item) {
             currentlyActive.classList.remove('active');
         }
         item.classList.toggle('active');
+    });
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    const links = document.querySelectorAll('.nav a');
+    const sections = document.querySelectorAll('.section');
+
+    // Set home as active by default
+    document.getElementById('home').classList.add('active');
+
+    links.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+
+            const targetSection = link.getAttribute('data-section');
+            if (!targetSection) return;
+
+            // Remove active class from all sections
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+
+            // Add active class to the target section
+            const targetElement = document.getElementById(targetSection);
+            if (targetElement) {
+                targetElement.classList.add('active');
+                
+                // Smooth scroll to top
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            }
+        });
     });
 });
