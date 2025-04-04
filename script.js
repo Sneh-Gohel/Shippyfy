@@ -69,6 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Set home as active by default
     document.getElementById('home').classList.add('active');
+    // document.getElementById('buyContainers').classList.add('active');
 
     links.forEach(link => {
         link.addEventListener('click', (e) => {
@@ -94,5 +95,116 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             }
         });
+    });
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    const priceFilterContainer = document.querySelector('.price-filter-container');
+    const priceFilterToggle = document.querySelector('.price-filter-toggle');
+    const priceFilterDropdown = document.querySelector('.price-filter-dropdown');
+    const customRangeContainer = document.querySelector('.custom-range-container');
+    const customRangeRadio = document.querySelector('#custom-range');
+    const rangeInputs = document.querySelectorAll('input[name="price-range"]');
+    
+    // Toggle dropdown visibility
+    priceFilterToggle.addEventListener('click', function() {
+      const isVisible = priceFilterDropdown.style.display === 'block';
+      priceFilterDropdown.style.display = isVisible ? 'none' : 'block';
+    });
+    
+    // Show/hide custom range based on selection
+    rangeInputs.forEach(input => {
+      input.addEventListener('change', function() {
+        customRangeContainer.style.display = this.id === 'custom-range' ? 'block' : 'none';
+      });
+    });
+    
+    // Range slider functionality
+    const rangeMin = document.querySelector('.range-min');
+    const rangeMax = document.querySelector('.range-max');
+    const inputMin = document.querySelector('.input-min');
+    const inputMax = document.querySelector('.input-max');
+    const progress = document.querySelector('.progress');
+    
+    function updateSlider() {
+      const minVal = parseInt(rangeMin.value);
+      const maxVal = parseInt(rangeMax.value);
+      
+      inputMin.value = minVal;
+      inputMax.value = maxVal;
+      
+      progress.style.left = (minVal / rangeMin.max) * 100 + "%";
+      progress.style.right = 100 - (maxVal / rangeMax.max) * 100 + "%";
+    }
+    
+    rangeMin.addEventListener('input', updateSlider);
+    rangeMax.addEventListener('input', updateSlider);
+    
+    inputMin.addEventListener('change', function() {
+      rangeMin.value = this.value;
+      updateSlider();
+    });
+    
+    inputMax.addEventListener('change', function() {
+      rangeMax.value = this.value;
+      updateSlider();
+    });
+    
+    // Close dropdown when clicking outside
+    document.addEventListener('click', function(e) {
+      if (!priceFilterContainer.contains(e.target)) {
+        priceFilterDropdown.style.display = 'none';
+      }
+    });
+    
+    // Set predefined ranges
+    document.querySelector('#range1').addEventListener('change', function() {
+      rangeMin.value = 0;
+      rangeMax.value = 100;
+      updateSlider();
+    });
+    
+    document.querySelector('#range2').addEventListener('change', function() {
+      rangeMin.value = 100;
+      rangeMax.value = 300;
+      updateSlider();
+    });
+    
+    document.querySelector('#range3').addEventListener('change', function() {
+      rangeMin.value = 300;
+      rangeMax.value = 600;
+      updateSlider();
+    });
+    
+    document.querySelector('#range4').addEventListener('change', function() {
+      rangeMin.value = 600;
+      rangeMax.value = 1000;
+      updateSlider();
+    });
+  });
+
+  // Add this to your script.js to handle image loading
+document.addEventListener('DOMContentLoaded', function() {
+    const productImages = document.querySelectorAll('.product-image');
+    
+    productImages.forEach(img => {
+        const loader = img.parentElement.querySelector('.image-loader');
+        loader.style.display = 'block';
+        
+        if (img.complete) {
+            // Image already loaded
+            img.classList.add('loaded');
+            loader.style.display = 'none';
+        } else {
+            img.addEventListener('load', function() {
+                img.classList.add('loaded');
+                loader.style.display = 'none';
+            });
+            
+            img.addEventListener('error', function() {
+                loader.style.display = 'none';
+                // Handle error (maybe show placeholder)
+            });
+        }
     });
 });
