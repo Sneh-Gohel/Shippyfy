@@ -1494,20 +1494,386 @@ input[type="range"]::-webkit-slider-thumb {
 #buyContainers .product .productContainers .rightSide .spec:nth-child(3) { animation-delay: 0.8s; }
 #buyContainers .product .productContainers .rightSide .spec:nth-child(4) { animation-delay: 0.9s; }
 
-/* * {
-	box-sizing: border-box;
+#rentContainers{
+    display: none;
+    background-image: linear-gradient(180deg, #EAEEFE 45%, #b2abdb);
 }
 
-body {
-	background: #f6f5f7;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-direction: column;
-	font-family: 'Montserrat', sans-serif;
-	height: 100vh;
-	margin: -20px 0 50px;
-} */
+#rentContainers.active {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#rentContainers .mainContent {
+    padding: 20px;
+    padding-top: 100px;
+    display: flex;
+    flex-direction: column;
+}
+
+#rentContainers .mainContent .subNav {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    gap: 20px;
+}
+
+#rentContainers .price-filter-container {
+    position: relative;
+    display: inline-block;
+    font-family: 'Sen', sans-serif;
+    margin: 20px;
+}
+
+#rentContainers .price-filter-toggle {
+    background: #2463eb;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background 0.3s;
+}
+
+#rentContainers .price-filter-toggle:hover {
+    background: #2463eb;
+}
+
+#rentContainers .price-filter-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 300px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-top: 10px;
+    z-index: 100;
+    transform-origin: top center;
+    animation: scaleIn 0.3s ease-out forwards;
+    display: none;
+}
+
+#rentContainers .price-filter-container:hover .price-filter-dropdown,
+#rentContainers .price-filter-dropdown:hover {
+    display: block;
+}
+
+@keyframes scaleIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+#rentContainers .price-options {
+    margin-bottom: 15px;
+}
+
+#rentContainers .price-option {
+    margin-bottom: 10px;
+}
+
+#rentContainers .price-option input[type="radio"] {
+    margin-right: 10px;
+}
+
+#rentContainers .price-option label {
+    cursor: pointer;
+    color: #5743CD;
+}
+
+#rentContainers .custom-range-container {
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+}
+
+#rentContainers .price-slider-container {
+    margin-bottom: 20px;
+}
+
+#rentContainers .price-inputs {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+#rentContainers .field {
+    display: flex;
+    align-items: center;
+    width: 45%;
+}
+
+#rentContainers .field span {
+    margin-right: 10px;
+    color: #5743CD;
+    font-weight: bold;
+}
+
+#rentContainers .field input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    outline: none;
+}
+
+#rentContainers .slider {
+    height: 6px;
+    background: #ddd;
+    border-radius: 5px;
+    position: relative;
+    margin-bottom: 15px;
+}
+
+#rentContainers .progress {
+    height: 6px;
+    background: #2463eb;
+    border-radius: 5px;
+    position: absolute;
+    left: 25%;
+    right: 25%;
+}
+
+#rentContainers .range-input {
+    position: relative;
+    height: 6px;
+}
+
+#rentContainers .range-input input {
+    position: absolute;
+    top: 0;
+    height: 6px;
+    width: 100%;
+    background: none;
+    -webkit-appearance: none;
+    pointer-events: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    height: 17px;
+    width: 17px;
+    border-radius: 50%;
+    background: #2463eb;
+    pointer-events: auto;
+    -webkit-appearance: none;
+    cursor: pointer;
+    margin-top: -5px;
+}
+
+#rentContainers .apply-btn {
+    width: 100%;
+    padding: 10px;
+    background: #7669ec;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s;
+}
+
+#rentContainers .apply-btn:hover {
+    background: #a39ce2;
+}
+
+#rentContainers .fav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f02da5;
+    color: white;
+}
+
+#rentContainers .fav i{
+    padding-right: 10px;
+}
+
+/* Product Container Styles */
+#rentContainers .product {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    padding: 20px;
+}
+
+#rentContainers .product .productContainers {
+    display: flex;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    min-height: 350px;
+    width: 90%;
+    background-color: #f8f9fa8e;
+    box-shadow: 0 0 20px #b2abdb;
+    overflow: hidden;
+    transition: all 0.5s ease;
+    animation: fadeInUp 0.8s ease-out;
+    backdrop-filter: blur(50px);
+}
+
+#rentContainers .product .productContainers:hover {
+    box-shadow: 0 0 20px #5743CD;
+    transform: translateY(-5px);
+}
+
+/* Left Side (Image) */
+#rentContainers .product .productContainers .leftSide {
+    width: 40%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    position: relative;
+}
+
+/* Right Side (Details) */
+#rentContainers .product .productContainers .rightSide {
+    width: 60%;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#rentContainers .product .productContainers .rightSide .productName h2 {
+    font-size: 1.8rem;
+    color: #2d3748;
+    margin-bottom: 10px;
+    animation: fadeInUp 0.5s ease-out 0.4s forwards;
+    opacity: 0;
+}
+
+#rentContainers .product .productContainers .rightSide .productPrice{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    animation: fadeInUp 0.5s ease-out 0.5s forwards;
+    font-size: 1.3rem;
+    opacity: 0;
+    margin-bottom: 20px;
+    animation-delay: 0.6s;
+}
+
+#rentContainers .product .productContainers .rightSide .productPrice h3 {
+    font-size: 1.5rem;
+    color: #2463EB;
+    margin-bottom: 20px;
+    animation: fadeInUp 0.5s ease-out 0.5s forwards;
+    opacity: 0;
+}
+
+#rentContainers .product .productContainers .rightSide .productDescription {
+    margin-bottom: 20px;
+}
+
+#rentContainers .product .productContainers .rightSide .spec {
+    display: flex;
+    height: 50px;
+    /* margin-bottom: 10px; */
+    animation: fadeInUp 0.5s ease-out forwards;
+    opacity: 0;
+    align-items: center;
+}
+
+#rentContainers .product .productContainers .rightSide .spec h4 {
+    font-weight: 600;
+    color: #4a5568;
+    min-width: 100px;
+    margin-right: 10px;
+}
+
+#rentContainers .product .productContainers .rightSide .spec p {
+    color: #718096;
+}
+
+/* Buttons */
+#rentContainers .product .productContainers .rightSide .buttonGroup {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+#rentContainers .product .productContainers .rightSide .addToFav {
+    background-color: #f02da5;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+#rentContainers .product .productContainers .rightSide .rentNow {
+    background-color: #2463EB;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+#rentContainers .product .productContainers .rightSide .addToCart:hover, .buyNow:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+#rentContainers .product .productContainers .rightSide .addToCart:active, .buyNow:active {
+    transform: translateY(0);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes loading {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+/* Delay animations for specs */
+#rentContainers .product .productContainers .rightSide .spec:nth-child(1) { animation-delay: 0.6s; }
+#rentContainers .product .productContainers .rightSide .spec:nth-child(2) { animation-delay: 0.7s; }
+#rentContainers .product .productContainers .rightSide .spec:nth-child(3) { animation-delay: 0.8s; }
+#rentContainers .product .productContainers .rightSide .spec:nth-child(4) { animation-delay: 0.9s; }
+
 
 .login_signup_container {
     position: fixed;

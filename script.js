@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Set home as active by default
     // document.getElementById('home').classList.add('active');
-    document.getElementById('buyContainers').classList.add('active');
+    document.getElementById('rentContainers').classList.add('active');
 
     links.forEach(link => {
         link.addEventListener('click', (e) => {

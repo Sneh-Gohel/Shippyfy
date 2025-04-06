@@ -423,7 +423,112 @@
         </div>
 
     </section>
-    <section id="rentContainers" class="section">Rent Container</section>
+    <section id="rentContainers" class="section">
+        <div class="mainContent">
+            <div class="subNav">
+                <div class="price-filter-container">
+                    <button class="price-filter-toggle">Price Range ▼</button>
+                    <div class="price-filter-dropdown">
+                        <div class="price-options">
+                            <div class="price-option">
+                                <input type="radio" id="range1" name="price-range" checked>
+                                <label for="range1">Under $100</label>
+                            </div>
+                            <div class="price-option">
+                                <input type="radio" id="range2" name="price-range">
+                                <label for="range2">$100 - $300</label>
+                            </div>
+                            <div class="price-option">
+                                <input type="radio" id="range3" name="price-range">
+                                <label for="range3">$300 - $600</label>
+                            </div>
+                            <div class="price-option">
+                                <input type="radio" id="range4" name="price-range">
+                                <label for="range4">Over $600</label>
+                            </div>
+                            <div class="price-option">
+                                <input type="radio" id="custom-range" name="price-range">
+                                <label for="custom-range">Custom Range</label>
+                            </div>
+                        </div>
+
+                        <div class="custom-range-container" style="display: none;">
+                            <div class="price-slider-container">
+                                <div class="price-inputs">
+                                    <div class="field">
+                                        <span>Min</span>
+                                        <input type="number" class="input-min" value="0">
+                                    </div>
+                                    <div class="field">
+                                        <span>Max</span>
+                                        <input type="number" class="input-max" value="1000">
+                                    </div>
+                                </div>
+                                <div class="slider">
+                                    <div class="progress"></div>
+                                </div>
+                                <div class="range-input">
+                                    <input type="range" class="range-min" min="0" max="1000" value="0" step="10">
+                                    <input type="range" class="range-max" min="0" max="1000" value="1000" step="10">
+                                </div>
+                            </div>
+                        </div>
+                        <button class="apply-btn">Apply Filter</button>
+                    </div>
+                </div>
+                <button class="fav mainButton">
+                    <i class="fa-solid fa-heart"></i>
+                    Favorites
+                </button>
+<button class="login subButton">Login</button>
+<button class="signUp mainButton">Signup</button>
+            </div>
+
+        </div>
+
+        <div class="product">
+            <div class="productContainers">
+                <div class="leftSide">
+                    <div class="image-loader"></div>
+                    <img src="images/containers/container2.jpg" alt="Container 1" class="product-image">
+                </div>
+                <div class="rightSide">
+                    <div class="productName">
+                        <h2>20ft Standard Shipping Container</h2>
+                    </div>
+                    <div class="productPrice">
+                        <h3>$2</h3><span>/ Per Day</span>
+                    </div>
+                    <div class="productDescription">
+                        <div class="spec">
+                            <h4>Length:</h4>
+                            <p>20ft</p>
+                        </div>
+                        <div class="spec">
+                            <h4>Material:</h4>
+                            <p>Steel</p>
+                        </div>
+                        <div class="spec">
+                            <h4>Usage:</h4>
+                            <p>Shipping</p>
+                        </div>
+                        <div class="spec">
+                            <h4>Weight:</h4>
+                            <p>2,300 kg</p>
+                        </div>
+                    </div>
+                    <div class="buttonGroup">
+                        <button class="addToFav mainButton">
+                            <i class="fa-solid fa-heart-circle-plus"></i></i> Add Favorites
+                        </button>
+                        <button class="rentNow secondaryButton">
+                            <i class="fas fa-bolt"></i> Rent Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
     <section id="about" class="section">About Us</section>
     <section id="connect" class="section">Connect With Us</section>
     <div class = "login_signup_container">
