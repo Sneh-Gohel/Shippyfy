@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Set home as active by default
     // document.getElementById('home').classList.add('active');
-    document.getElementById('rentContainers').classList.add('active');
+    document.getElementById('about').classList.add('active');
 
     links.forEach(link => {
         link.addEventListener('click', (e) => {
@@ -271,4 +271,48 @@ signUpButton.addEventListener('click', () => {
 
 signInButton.addEventListener('click', () => {
     container.classList.remove("right-panel-active");
+});
+
+// Add this to your existing JavaScript
+document.addEventListener('DOMContentLoaded', function() {
+    // Animate stats counting
+    const statNumbers = document.querySelectorAll('.stat-number');
+    
+    function animateStats() {
+        statNumbers.forEach(stat => {
+            const target = parseInt(stat.getAttribute('data-count'));
+            const suffix = stat.textContent.includes('%') ? '%' : '';
+            const duration = 2000;
+            const start = 0;
+            const increment = target / (duration / 16);
+            
+            let current = start;
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    clearInterval(timer);
+                    current = target;
+                }
+                stat.textContent = Math.floor(current) + suffix;
+            }, 16);
+        });
+    }
+    
+    // Intersection Observer for animations
+    const aboutObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate');
+                if (entry.target.classList.contains('about-stats')) {
+                    animateStats();
+                }
+                aboutObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1 });
+    
+    // Observe about sections
+    document.querySelectorAll('.about-mission, .about-timeline, .about-team, .about-stats').forEach(section => {
+        aboutObserver.observe(section);
+    });
 });
