@@ -68,8 +68,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const sections = document.querySelectorAll('.section');
 
     // Set home as active by default
-    // document.getElementById('home').classList.add('active');
-    document.getElementById('about').classList.add('active');
+    document.getElementById('home').classList.add('active');
+    // document.getElementById('connect').classList.add('active');
 
     links.forEach(link => {
         link.addEventListener('click', (e) => {
@@ -315,4 +315,94 @@ document.addEventListener('DOMContentLoaded', function() {
     document.querySelectorAll('.about-mission, .about-timeline, .about-team, .about-stats').forEach(section => {
         aboutObserver.observe(section);
     });
+});
+
+// Add this to your existing JavaScript
+document.addEventListener('DOMContentLoaded', function() {
+    // Form submission handling
+    const contactForm = document.querySelector('.animated-form');
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            
+            // Here you would typically send the data to your server
+            console.log('Form submitted:', { name, email, message });
+            
+            // Show success animation
+            const submitBtn = contactForm.querySelector('.submit-btn');
+            submitBtn.innerHTML = '<i class="fas fa-check"></i> Message Sent!';
+            submitBtn.style.backgroundColor = '#4CAF50';
+            
+            // Reset form after delay
+            setTimeout(() => {
+                contactForm.reset();
+                submitBtn.innerHTML = '<span>Send Message</span><i class="fas fa-paper-plane"></i>';
+                submitBtn.style.backgroundColor = '#5743CD';
+            }, 3000);
+        });
+    }
+    
+    // Intersection Observer for animations
+    const connectObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate');
+                connectObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1 });
+    
+    // Observe connect section
+    const connectSection = document.getElementById('connect');
+    if (connectSection) {
+        connectObserver.observe(connectSection);
+    }
+});
+
+document.querySelectorAll('.form-group input, .form-group textarea').forEach(input => {
+    input.addEventListener('focus', function() {
+        this.parentElement.querySelector('.underline').style.width = '100%';
+        this.parentElement.querySelector('label').style.color = '#5743CD';
+    });
+    
+    input.addEventListener('blur', function() {
+        if (!this.value) {
+            this.parentElement.querySelector('.underline').style.width = '0';
+        }
+    });
+});
+
+// 3D Container Interactive Effects
+const floatingContainer = document.querySelector('.floating-container model-viewer');
+if (floatingContainer) {
+    floatingContainer.addEventListener('mouseenter', () => {
+        floatingContainer.setAttribute('auto-rotate-delay', '0');
+        floatingContainer.setAttribute('rotation-per-second', '30deg');
+    });
+    
+    floatingContainer.addEventListener('mouseleave', () => {
+        floatingContainer.setAttribute('auto-rotate-delay', '3000');
+        floatingContainer.setAttribute('rotation-per-second', '10deg');
+    });
+}
+
+// Add compass movement with mouse
+document.addEventListener('mousemove', (e) => {
+    const container = document.querySelector('.floating-container');
+    if (!container) return;
+    
+    const x = e.clientX / window.innerWidth - 0.5;
+    const y = e.clientY / window.innerHeight - 0.5;
+    
+    container.style.transform = `
+        translateX(${x * 20}px) 
+        translateY(${y * 20}px)
+        rotateX(${y * 5}deg) 
+        rotateY(${x * 5}deg)
+    `;
 });

@@ -4,6 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Basic Favicon -->
+<link rel="icon" href="images/favicon.ico" type="image/x-icon">
+
+<!-- Modern Multi-Platform Version (Recommended) -->
+<link rel="apple-touch-icon" sizes="180x180" href="images/logos/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="images/logos/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="images/logos/favicon-16x16.png">
+<link rel="manifest" href="images/logos/site.webmanifest">
+<link rel="mask-icon" href="images/logos/safari-pinned-tab.svg" color="#5743cd">
     <title>Shippyfy - A Reliable Shipping Continers Provider.</title>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -683,7 +692,129 @@
             </div>
         </div>
     </section>
-    <section id="connect" class="section">Connect With Us</section>
+    <section id="connect" class="section">
+        <!-- Animated Background Waves -->
+        <div class="connect-waves">
+            <div class="wave wave-1"></div>
+            <div class="wave wave-2"></div>
+            <div class="wave wave-3"></div>
+        </div>
+        
+        <div class="connect-container">
+            <!-- Left Side - Contact Form -->
+            <div class="connect-form">
+                <h2 class="form-title">Get In Touch</h2>
+                <p class="form-subtitle">We'd love to hear from you! Send us a message.</p>
+                
+                <form class="animated-form">
+                    <div class="form-group">
+                        <input type="text" id="name" required>
+                        <label for="name">Your Name</label>
+                        <div class="underline"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <input type="email" id="email" required>
+                        <label for="email">Email Address</label>
+                        <div class="underline"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <input type="tel" id="phone">
+                        <label for="phone">Phone Number (Optional)</label>
+                        <div class="underline"></div>
+                    </div>
+                    
+                    <div class="form-group textarea-group">
+                        <textarea id="message" rows="4" required></textarea>
+                        <label for="message">Your Message</label>
+                        <div class="underline"></div>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">
+                        <span>Send Message</span>
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </form>
+            </div>
+            
+            <!-- Right Side - Contact Info -->
+            <div class="connect-info">
+                <div class="info-card">
+                    <h3 class="info-title">Contact Information</h3>
+                    <p class="info-text">Fill out the form or reach us directly</p>
+                    
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="info-content">
+                            <h4>Our Headquarters</h4>
+                            <p>123 Container Street, Miami, FL 33101</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div class="info-content">
+                            <h4>Call Us</h4>
+                            <p>+1 (305) 123-4567</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="info-content">
+                            <h4>Email Us</h4>
+                            <p>contact@shippyfy.com</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-social">
+                        <h4>Follow Us</h4>
+                        <div class="social-links">
+                            <a href="#" class="social-link">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="#" class="social-link">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#" class="social-link">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="#" class="social-link">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Floating Container Animation -->
+        <div class="floating-container">
+            <model-viewer 
+                src="scene.gltf" 
+                alt="3D Shipping Container" 
+                auto-rotate 
+                camera-controls 
+                ar 
+                exposure="1"
+                shadow-intensity="1"
+                environment-image="neutral"
+                style="width: 100%; height: 100%;">
+            </model-viewer>
+            <div class="container-glow"></div>
+        </div>
+        <div class="interactive-grid">
+            <div class="grid-lines"></div>
+            <div class="grid-dots"></div>
+        </div>
+    </section>
     <div class = "login_signup_container">
         <div class="container" id="container">
             <div class="form-container sign-up-container">
