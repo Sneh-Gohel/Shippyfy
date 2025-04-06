@@ -68,8 +68,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const sections = document.querySelectorAll('.section');
 
     // Set home as active by default
-    document.getElementById('home').classList.add('active');
-    // document.getElementById('buyContainers').classList.add('active');
+    // document.getElementById('home').classList.add('active');
+    document.getElementById('buyContainers').classList.add('active');
 
     links.forEach(link => {
         link.addEventListener('click', (e) => {
@@ -183,7 +183,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
-  // Add this to your script.js to handle image loading
 document.addEventListener('DOMContentLoaded', function() {
     const productImages = document.querySelectorAll('.product-image');
     
@@ -207,4 +206,69 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
     });
+});
+
+const signUpButton = document.getElementById('signUp');
+const signInButton = document.getElementById('signIn');
+const container = document.getElementById('container');
+
+signUpButton.addEventListener('click', () => {
+	container.classList.add("right-panel-active");
+});
+
+signInButton.addEventListener('click', () => {
+	container.classList.remove("right-panel-active");
+});
+
+// Add these variables at the top
+const loginSignupContainer = document.querySelector('.login_signup_container');
+const loginButtons = document.querySelectorAll('.login, .signUp');
+const closeModal = document.createElement('button');
+
+// Create close button
+closeModal.className = 'close-modal';
+closeModal.innerHTML = '&times;';
+loginSignupContainer.appendChild(closeModal);
+
+// Toggle modal function
+function toggleModal() {
+    loginSignupContainer.classList.toggle('active');
+    document.body.style.overflow = loginSignupContainer.classList.contains('active') ? 'hidden' : '';
+}
+
+// Event listeners for login/signup buttons
+loginButtons.forEach(button => {
+    button.addEventListener('click', (e) => {
+        e.preventDefault();
+        toggleModal();
+        
+        // Switch to the correct panel based on which button was clicked
+        if (button.classList.contains('signUp')) {
+            container.classList.add("right-panel-active");
+        } else {
+            container.classList.remove("right-panel-active");
+        }
+    });
+});
+
+// Close modal when clicking close button, overlay, or pressing ESC
+closeModal.addEventListener('click', toggleModal);
+loginSignupContainer.addEventListener('click', (e) => {
+    if (e.target === loginSignupContainer) {
+        toggleModal();
+    }
+});
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && loginSignupContainer.classList.contains('active')) {
+        toggleModal();
+    }
+});
+
+// Updated sign up/in button handlers
+signUpButton.addEventListener('click', () => {
+    container.classList.add("right-panel-active");
+});
+
+signInButton.addEventListener('click', () => {
+    container.classList.remove("right-panel-active");
 });
