@@ -1102,6 +1102,7 @@ img {
 
 #buyContainers{
     display: none;
+    height: 100%;
     background-image: linear-gradient(180deg, #EAEEFE 45%, #b2abdb);
 }
 

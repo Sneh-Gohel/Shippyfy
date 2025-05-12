@@ -236,6 +236,70 @@ function toggleModal() {
     document.body.style.overflow = loginSignupContainer.classList.contains('active') ? 'hidden' : '';
 }
 
+function setCookie(name, value, hours) {
+    const date = new Date();
+    date.setTime(date.getTime() + (hours * 60 * 60 * 1000));
+    const expires = "expires=" + date.toUTCString();
+    document.cookie = name + "=" + value + ";" + expires + ";path=/";
+}
+
+function getCookie(name) {
+    const nameEQ = name + "=";
+    const ca = document.cookie.split(';');
+    for(let i=0; i < ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) === ' ') c = c.substring(1);
+        if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length);
+    }
+    return null;
+}
+
+function updateUserUI() {
+    const userEmail = getCookie('user_email');
+    const loginButtons = document.querySelectorAll('.login, .signUp');
+    const userDisplay = document.querySelector('.user-display');
+    
+    if (userEmail) {
+        // Hide login/signup buttons
+        loginButtons.forEach(btn => btn.style.display = 'none');
+        
+        // Create or show user display
+        if (!userDisplay) {
+            const userDisplayDiv = document.createElement('div');
+            userDisplayDiv.className = 'user-display mainButton';
+            userDisplayDiv.innerHTML = `
+                <i class="fas fa-user"></i>
+                ${userEmail.split('@')[0]}
+            `;
+            
+            // Add logout functionality
+            userDisplayDiv.addEventListener('click', () => {
+                // Clear cookies
+                document.cookie = "user_email=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+                document.cookie = "user_token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+                
+                // Reload to update UI
+                location.reload();
+            });
+            
+            // Insert after cart button
+            const subNav = document.querySelector('.subNav');
+            const cartBtn = document.querySelector('.cart');
+            subNav.insertBefore(userDisplayDiv, cartBtn.nextSibling);
+        } else {
+            userDisplay.style.display = 'flex';
+        }
+    } else {
+        // Show login/signup buttons
+        loginButtons.forEach(btn => btn.style.display = 'flex');
+        
+        // Hide user display if exists
+        if (userDisplay) {
+            userDisplay.style.display = 'none';
+        }
+    }
+}
+
 // Event listeners for login/signup buttons
 loginButtons.forEach(button => {
     button.addEventListener('click', (e) => {
@@ -405,4 +469,124 @@ document.addEventListener('mousemove', (e) => {
         rotateX(${y * 5}deg) 
         rotateY(${x * 5}deg)
     `;
+});
+
+// Update your form submission handlers
+document.querySelector('.sign-up-container form').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    
+    const form = this;
+    const submitBtn = form.querySelector('button');
+    const originalBtnText = submitBtn.innerHTML;
+    
+    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Signing Up...';
+    submitBtn.disabled = true;
+
+    try {
+        // Create URLSearchParams from form data
+        const formData = new URLSearchParams();
+        formData.append('name', form.querySelector('input[type="text"]').value);
+        formData.append('email', form.querySelector('input[type="email"]').value);
+        formData.append('password', form.querySelector('input[type="password"]').value);
+
+        const response = await fetch('http://localhost/Shippyfy/signup.php', {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }
+        });
+
+        if (!response.ok) {
+            const errorText = await response.text();
+            throw new Error(errorText || `HTTP error! status: ${response.status}`);
+        }
+
+        const data = await response.text();
+        
+        if (data.trim() === 'successful') {
+            // Set cookies
+            setCookie('user_email', form.querySelector('input[type="email"]').value, 24);
+            setCookie('user_token', 'authenticated', 24);
+            
+            // Show success and close modal
+            submitBtn.innerHTML = '<i class="fas fa-check"></i> Success!';
+            setTimeout(() => {
+                toggleModal();
+                updateUserUI();
+                submitBtn.innerHTML = originalBtnText;
+                submitBtn.disabled = false;
+                form.reset();
+            }, 1500);
+        } else {
+            throw new Error(data || 'Unknown error occurred');
+        }
+    } catch (error) {
+        console.error('Signup Error:', error);
+        submitBtn.innerHTML = '<i class="fas fa-times"></i> ' + (error.message || 'Signup failed');
+        setTimeout(() => {
+            submitBtn.innerHTML = originalBtnText;
+            submitBtn.disabled = false;
+        }, 2000);
+    }
+});
+
+document.querySelector('.sign-in-container form').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    
+    const form = this;
+    const submitBtn = form.querySelector('button');
+    const originalBtnText = submitBtn.innerHTML;
+    
+    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Signing In...';
+    submitBtn.disabled = true;
+
+    try {
+        // Create URLSearchParams from form data
+        const formData = new URLSearchParams();
+        formData.append('email', form.querySelector('input[type="email"]').value);
+        formData.append('password', form.querySelector('input[type="password"]').value);
+
+        const response = await fetch('http://localhost/Shippyfy/login.php', {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }
+        });
+
+        console.log('Response:', response);
+
+        if (!response.ok) {
+            const errorText = await response.text();
+            throw new Error(errorText || `HTTP error! status: ${response.status}`);
+        }
+
+        const data = await response.text();
+        
+        if (data.trim() === 'successful') {
+            // Set cookies
+            setCookie('user_email', form.querySelector('input[type="email"]').value, 24);
+            setCookie('user_token', 'authenticated', 24);
+            
+            // Show success and close modal
+            submitBtn.innerHTML = '<i class="fas fa-check"></i> Success!';
+            setTimeout(() => {
+                toggleModal();
+                updateUserUI();
+                submitBtn.innerHTML = originalBtnText;
+                submitBtn.disabled = false;
+                form.reset();
+            }, 1500);
+        } else {
+            throw new Error(data || 'Unknown error occurred');
+        }
+    } catch (error) {
+        console.error('Login Error:', error);
+        submitBtn.innerHTML = '<i class="fas fa-times"></i> ' + (error.message || 'Login failed');
+        setTimeout(() => {
+            submitBtn.innerHTML = originalBtnText;
+            submitBtn.disabled = false;
+        }, 2000);
+    }
 });
