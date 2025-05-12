@@ -577,6 +577,159 @@ document.addEventListener("DOMContentLoaded", function () {
     // Initialize user UI
     updateUserUI();
 
+    let isRentContainerDataLoaded = false;
+
+function fetchRentContainerData() {
+    const productContainer = document.querySelector('#rentContainers .product');
+    if (!productContainer) return;
+    
+    productContainer.innerHTML = `
+        <div class="loading-container">
+            <div class="loading-spinner"></div>
+            <p>Loading available containers...</p>
+        </div>
+    `;
+
+    fetch('http://localhost/Shippyfy/getRentContainerData.php')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            if (data && data.length > 0) {
+                renderRentContainerData(data);
+            } else {
+                showRentEmptyState();
+            }
+            isRentContainerDataLoaded = true;
+        })
+        .catch(error => {
+            console.error('Error fetching rent container data:', error);
+            showRentErrorState(error);
+        });
+}
+
+function renderRentContainerData(containers) {
+    const productContainer = document.querySelector('#rentContainers .product');
+    if (!productContainer) return;
+    
+    productContainer.innerHTML = `
+        ${containers.map(container => `
+            <div class="productContainers">
+                <div class="leftSide">
+                    <div class="image-loader"></div>
+                    <img src="${container.image}" alt="${container.name}" class="product-image">
+                </div>
+                <div class="rightSide">
+                    <div class="productName">
+                        <h2>${container.title}</h2>
+                    </div>
+                    <div class="productPrice">
+                        <h3> ₹ ${container.price}</h3><span>/ Per Day</span>
+                    </div>
+                    <div class="productDescription">
+                        <div class="spec">
+                            <h4>Length:</h4>
+                            <p>${container.length}</p>
+                        </div>
+                        <div class="spec">
+                            <h4>Material:</h4>
+                            <p>${container.material}</p>
+                        </div>
+                        <div class="spec">
+                            <h4>Usage:</h4>
+                            <p>${container.usage}</p>
+                        </div>
+                        <div class="spec">
+                            <h4>Weight:</h4>
+                            <p>${container.weight} kg</p>
+                        </div>
+                    </div>
+                    <div class="buttonGroup">
+                        <button class="addToFav mainButton">
+                            <i class="fa-solid fa-heart-circle-plus"></i> Add Favorites
+                        </button>
+                        <button class="rentNow secondaryButton">
+                            <i class="fas fa-bolt"></i> Rent Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+        `).join('')}
+    `;
+
+    initializeRentImageLoaders();
+}
+
+function showRentEmptyState() {
+    const productContainer = document.querySelector('#rentContainers .product');
+    if (!productContainer) return;
+    
+    productContainer.innerHTML = `
+        <div class="empty-state">
+            <i class="fas fa-box-open"></i>
+            <h3>No Containers Available for Rent</h3>
+            <p>We currently don't have any containers available for rent. Please check back later.</p>
+        </div>
+    `;
+}
+
+function showRentErrorState(error) {
+    const productContainer = document.querySelector('#rentContainers .product');
+    if (!productContainer) return;
+    
+    productContainer.innerHTML = `
+        <div class="error-state">
+            <i class="fas fa-exclamation-triangle"></i>
+            <h3>Error Loading Rental Data</h3>
+            <p>${error.message || 'Failed to load rental container data'}</p>
+            <button class="retry-button" id="retryRentButton">Retry</button>
+        </div>
+    `;
+
+    document.getElementById('retryRentButton')?.addEventListener('click', fetchRentContainerData);
+}
+
+function initializeRentImageLoaders() {
+    document.querySelectorAll('#rentContainers .product-image').forEach(img => {
+        const loader = img.parentElement.querySelector('.image-loader');
+        if (loader) {
+            loader.style.display = 'block';
+            
+            if (img.complete) {
+                img.classList.add('loaded');
+                loader.style.display = 'none';
+            } else {
+                img.addEventListener('load', function() {
+                    img.classList.add('loaded');
+                    loader.style.display = 'none';
+                });
+                
+                img.addEventListener('error', function() {
+                    loader.style.display = 'none';
+                    img.src = 'images/containers/container2.jpg';
+                });
+            }
+        }
+    });
+}
+
+// Setup rent container observer
+const rentContainerSection = document.getElementById('rentContainers');
+if (rentContainerSection) {
+    const rentContainerObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting && !isRentContainerDataLoaded) {
+                fetchRentContainerData();
+            }
+        });
+    }, { threshold: 0.1 });
+
+    rentContainerObserver.observe(rentContainerSection);
+}
+
     // Contact form submission
     document.querySelector('.animated-form')?.addEventListener('submit', function(e) {
         e.preventDefault();
