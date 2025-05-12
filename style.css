@@ -1103,6 +1103,7 @@ img {
 #buyContainers{
     display: none;
     height: 100%;
+    min-height: 100vh;
     background-image: linear-gradient(180deg, #EAEEFE 45%, #b2abdb);
 }
 
@@ -1494,6 +1495,75 @@ input[type="range"]::-webkit-slider-thumb {
 #buyContainers .product .productContainers .rightSide .spec:nth-child(2) { animation-delay: 0.7s; }
 #buyContainers .product .productContainers .rightSide .spec:nth-child(3) { animation-delay: 0.8s; }
 #buyContainers .product .productContainers .rightSide .spec:nth-child(4) { animation-delay: 0.9s; }
+
+/* Add these styles to your existing CSS */
+.loading-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 300px;
+    gap: 20px;
+}
+
+.loading-spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid #EAEEFE;
+    border-top: 5px solid #5743CD;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.empty-state {
+    text-align: center;
+    padding: 40px;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    margin: 20px;
+}
+
+.empty-state i {
+    font-size: 3rem;
+    color: #5743CD;
+    margin-bottom: 20px;
+}
+
+.error-state {
+    text-align: center;
+    padding: 40px;
+    background-color: #fdecea;
+    border-radius: 10px;
+    margin: 20px;
+    color: #d32f2f;
+}
+
+.error-state i {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.retry-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #5743CD;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.retry-button:hover {
+    background-color: #3a2b8a;
+}
+
+
 
 #rentContainers{
     display: none;
